@@ -1,0 +1,6 @@
+<launch>
+  <node name="teleop_twist_keyboard"
+         pkg="hokuyo_laser_robot_talebo" 
+         type="talebo" output="screen">
+  </node>
+</launch>

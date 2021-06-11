@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <!--- Run AMCL -->
+  <include file="$(find hokuyo_laser_robot_navigation)/launch/my_amcl_launch.launch" />
+
+  <!--- Run Move Base -->
+  <include file="$(find hokuyo_laser_robot_navigation)/launch/move_base.launch" />
+
+</launch>

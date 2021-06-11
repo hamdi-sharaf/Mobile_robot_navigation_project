@@ -1,0 +1,20 @@
+<launch>
+
+  <param name="robot_description" command="$(find xacro)/xacro $(find hokuyo_laser_robot_description)/urdf/hokuyo_laser_robot.xacro" />
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find hokuyo_laser_robot_control)/config/controller.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/hokuyo_laser_robot" args="joint_state_controller
+                                                        right_wheel_joint_velocity_controller
+                                                        left_wheel_joint_velocity_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+    <remap from="/joint_states" to="/hokuyo_laser_robot/joint_states" />
+  </node>
+
+</launch>
+

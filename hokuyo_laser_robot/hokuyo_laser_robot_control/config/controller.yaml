@@ -1,0 +1,18 @@
+hokuyo_laser_robot:
+
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+  right_wheel_joint_velocity_controller:
+    type: velocity_controllers/JointPositionController 
+    joint: right_wheel_joint
+    pid: {p: 100.0, i: 0.1, d: 10.0}
+   
+  left_wheel_joint_velocity_controller:
+    type: velocity_controllers/JointPositionController
+    joint:  left_wheel_joint
+    pid: {p: 100.0, i: 0.1, d: 10.0}
+
+
+   

@@ -1,0 +1,11 @@
+<launch>
+  <arg name="scan_topic"  default="mybot/laser_scan" />
+  <arg name="base_frame"  default="base_link"/>
+  <arg name="odom_frame"  default="odom"/>
+  <param name="use_sim_time" value="true"/>
+
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <rosparam file="$(find hokuyo_laser_robot_navigation)/params/gmapping_params.yaml" command="load" />
+   <remap from="scan" to="$(arg scan_topic)"/>
+  </node>
+</launch>
